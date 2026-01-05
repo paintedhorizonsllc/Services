@@ -1,0 +1,389 @@
+/* Base */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg: #f3f4f6;
+    --color-surface: #ffffff;
+    --color-accent: #1f4f7b;  /* deep blue */
+    --color-accent-soft: #fbbf24; /* warm golden */
+    --color-text: #111827;
+    --color-muted: #6b7280;
+    --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.12);
+    --radius-lg: 1rem;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+/* Layout helpers */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+.brand-logo {
+    height: 48px;
+    width:auto
+}
+.brand-text {
+    font-size: 2rem;
+    font-weight: 600;
+}
+.container {
+    width: min(1100px, 100% - 2.5rem);
+    margin-inline: auto;
+}
+
+.section {
+    padding: 4rem 0;
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Header & nav */
+.site-title {
+    justify-self: center;
+    font-size: 1.4rem;          /* “same size” headline */
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #f97316;             /* orange */
+    -webkit-text-stroke: 1px #000;
+    text-stroke: 1px #000;      /* (ignored by some browsers, fine) */
+    white-space: nowrap;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* logo | title | nav */
+    align-items: center;
+    padding-block: 0.75rem;
+}
+
+.logo {
+    display: flex;
+    align-items: left;
+    justify-self: start;
+}
+
+.logo img {
+    height: 38px;      /* tweak 28–36px if needed */
+    max-height: 38px;
+    width: auto;
+    display: block;
+}
+
+.logo span {
+    color: var(--color-accent-soft);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 0.95rem;
+    justify-self: end;          /* right side */
+}
+
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-muted);
+    padding: 0.25rem 0;
+}
+
+.main-nav a:hover {
+    color: var(--color-accent);
+}
+
+.nav-cta {
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+}
+
+.nav-cta:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+}
+
+/* Hero */
+
+.hero {
+    position: relative;
+    min-height: 70vh;
+    background: url("HouseImage.jpg") center/cover no-repeat;
+    color: #ffffff;
+    display: flex;
+    align-items: stretch;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        rgba(15, 23, 42, 0.85),
+        rgba(15, 23, 42, 0.55)
+    );
+}
+
+.hero-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.hero-text {
+    max-width: 32rem;
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 3vw + 1.5rem, 3.2rem);
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.05rem;
+    margin-bottom: 1.6rem;
+}
+
+/* Buttons */
+
+.btn-primary {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    border-radius: 999px;
+    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.98rem;
+    background: var(--color-accent-soft);
+    color: #111827;
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    filter: brightness(0.95);
+}
+
+/* Sections */
+
+.section-alt {
+    background: #e5ecf4;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.about-highlight {
+    background: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.about-highlight h3 {
+    margin-top: 0;
+}
+
+.about-highlight ul {
+    padding-left: 1.1rem;
+    margin: 0.5rem 0 0;
+}
+
+.about-highlight li {
+    margin-bottom: 0.5rem;
+}
+
+/* Cards (services & testimonials) */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.quote {
+    font-style: italic;
+    margin-bottom: 0.75rem;
+}
+
+.quote-name {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Gallery */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+    height: 220px;
+    object-fit: cover;
+}
+
+.gallery-item figcaption {
+    padding: 0.8rem 1rem 1rem;
+    font-size: 0.95rem;
+}
+
+/* Contact */
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.contact-form {
+    background: var(--color-surface);
+    padding: 1.75rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.form-row {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border-radius: 0.5rem;
+    border: 1px solid #d1d5db;
+    font: inherit;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 1px rgba(31, 79, 123, 0.12);
+}
+
+.form-note {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+.contact-info {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background: #e5ecf4;
+}
+
+/* Footer */
+
+.site-footer {
+    padding: 1.2rem 0;
+    background: #0b1120;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+}
+
+.footer-inner {
+    text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+   .nav-container {
+        grid-template-columns: 1fr;
+        row-gap: 0.3rem;
+        justify-items: center;
+        text-align: center;
+    }
+
+   .main-nav {
+        justify-self: center;
+       
+        justify-content: center;
+    }
+
+    .site-title {
+        font-size: 1.2rem;
+        letter-spacing: 0.08em;
+    }
+
+    .logo img {
+        height: 26px;
+        max-height: 26px;
+    }
+}
